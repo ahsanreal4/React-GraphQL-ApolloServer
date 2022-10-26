@@ -18,8 +18,13 @@ const typeDefs = gql`
     isInTheaters: Boolean!
   }
 
+  type GetAllUsersResponse {
+    users: [User!]!
+    dataSize: Int!
+  }
+
   type Query {
-    users(limit: Int!, offset: Int!): [User!]!
+    users(limit: Int!, offset: Int!): GetAllUsersResponse
     user(id: ID!): User
     movies: [Movie!]!
     movie(name: String!): Movie

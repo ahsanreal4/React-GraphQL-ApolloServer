@@ -52,7 +52,7 @@ const Users = {
       }
       paginatedArray.push(UserList[i])
     }
-    return paginatedArray
+    return { users: paginatedArray, dataSize: UserList.length }
   },
   user: (parent, args) => {
     const id = args.id

@@ -142,7 +142,7 @@ const Main = () => {
           Delete User
         </button>
       </div>
-      <div>
+      <div style={{ marginTop: 30 }}>
         <button
           disabled={page === 0}
           onClick={() => setPage((prev) => prev - 1)}
@@ -150,28 +150,16 @@ const Main = () => {
           Previous
         </button>
         {data &&
-          data.users.map((user: any) => {
+          data.users.users.map((user: any) => {
             return renderUser(user)
           })}
-        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+        <button
+          disabled={data && data.users.dataSize <= (page + 1) * PAGE_SIZE}
+          onClick={() => setPage((prev) => prev + 1)}
+        >
+          Next
+        </button>
       </div>
-      <h1>List of Users</h1>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '2rem',
-          alignContent: 'center'
-        }}
-      >
-        <h2>Name</h2>
-        <h2>Username</h2>
-        <h2>Age</h2>
-      </div>
-      {data &&
-        data.users.map((user: any) => {
-          return renderUser(user)
-        })}
       <h1>List of Movies</h1>
       <div
         style={{
