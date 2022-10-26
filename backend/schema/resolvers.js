@@ -1,5 +1,5 @@
-const { MovieList, UserList } = require('../fakeData')
-const _ = require('lodash')
+const { MovieList } = require('../fakeData')
+const { UserMutations } = require('../schema/mutations/UserMutations')
 
 // Resolvers
 const { Movies } = require('./queries/Movies')
@@ -12,29 +12,7 @@ const resolvers = {
   },
 
   Mutation: {
-    createUser: (parent, args) => {
-      const user = args.input
-      const lastId = UserList[UserList.length - 1].id
-      user.id = lastId + 1
-      UserList.push(user)
-      return user
-    },
-    updateUsername: (parent, args) => {
-      const { id, username } = args.input
-      let updatedUser
-      UserList.forEach((user) => {
-        if (user.id.toString() === id) {
-          user.username = username
-          updatedUser = user
-        }
-      })
-      return updatedUser
-    },
-    deleteUser: (parent, args) => {
-      const id = args.id
-      _.remove(UserList, (user) => user.id.toString() === id)
-      return null
-    }
+    ...UserMutations
   },
 
   User: {

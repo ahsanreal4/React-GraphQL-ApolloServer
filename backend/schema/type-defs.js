@@ -19,7 +19,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User!]!
+    users(limit: Int!, offset: Int!): [User!]!
     user(id: ID!): User
     movies: [Movie!]!
     movie(name: String!): Movie

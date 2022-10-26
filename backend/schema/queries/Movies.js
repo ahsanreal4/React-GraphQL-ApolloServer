@@ -1,3 +1,6 @@
+const { MovieList } = require('../../fakeData')
+const _ = require('lodash')
+
 const Movies = {
   // Movie Resolvers
   movies: () => {
